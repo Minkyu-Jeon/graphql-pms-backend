@@ -4,11 +4,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.3'
 
 gem 'rails', '~> 6.0.0'
-gem 'mongoid', '7.0.0'
 gem 'puma', '~> 3.11'
 
 # mongodb
-gem 'mongoid', '7.0'
+gem 'mongoid', git: 'https://github.com/mongodb/mongoid.git', ref: '8773b29'
 gem 'bson_ext'
 
 # gem 'redis', '~> 4.0'
@@ -17,8 +16,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 # GraphQL 관련 Gem 추가
-gem 'graphql', '= 1.8.4'
-gem 'graphiql-rails', '~> 1.4.10'
+gem 'graphql'
+gem 'graphiql-rails'
 gem 'apollo_upload_server', '~> 2.0.0.beta3'
 
 group :development, :test do
@@ -33,5 +32,3 @@ group :development do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem 'graphiql-rails', group: :development
