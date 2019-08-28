@@ -4,8 +4,13 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.3'
 
 gem 'rails', '~> 6.0.0'
-gem 'pg', '>= 0.18', '< 2.0'
+gem 'mongoid', '7.0.0'
 gem 'puma', '~> 3.11'
+
+# mongodb
+gem 'mongoid', '7.0'
+gem 'bson_ext'
+
 # gem 'redis', '~> 4.0'
 gem 'bcrypt', '~> 3.1.7'
 # gem 'image_processing', '~> 1.2'
