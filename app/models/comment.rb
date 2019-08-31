@@ -3,5 +3,6 @@ class Comment
   include Mongoid::Timestamps
 
   field :content, type: String
-  field :user_id, tpye: BSON::ObjectId
+  belongs_to :user
+  belongs_to :task
 end
