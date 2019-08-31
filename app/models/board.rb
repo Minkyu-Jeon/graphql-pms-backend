@@ -4,5 +4,5 @@ class Board
 
   validates :board_type, inclusion: { in: %w(scrum kanban) }
 
-  field :board_type, String, null: false
+  field :board_type, type: String
 end
