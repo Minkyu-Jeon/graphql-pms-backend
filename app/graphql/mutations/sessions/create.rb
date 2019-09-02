@@ -1,11 +1,13 @@
 module Mutations
   module Sessions
     class Create < Mutations::BaseMutation
-      argument :email, String, required: true
-      argument :password, String, required: true
+      graphql_name 'CreateSession'
+      
+      argument :email, GraphQL::STRING_TYPE, required: true
+      argument :password, GraphQL::STRING_TYPE, required: true
 
       field :user, Types::UserType, null: true
-      field :errors, [String], null: false
+      field :errors, [GraphQL::STRING_TYPE], null: false
 
       def resolve(email:, password:)
         user = User.find_by(email: email)

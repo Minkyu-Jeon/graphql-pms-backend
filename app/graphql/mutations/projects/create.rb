@@ -1,16 +1,19 @@
 module Mutations
   module Projects
     class Create < Mutations::BaseMutation
-      argument :name, String, required: false
-      argument :description, String, required: true
+      graphql_name 'CreateProject'
+
+      argument :name, GraphQL::STRING_TYPE, required: true
+      argument :description, GraphQL::STRING_TYPE, required: false
+      argument :board, Types::InputType::BoardInputType, required: false
 
       field :project, Types::ProjectType, null: true
-      field :errors, [String], null: false
+      field :errors, [GraphQL::STRING_TYPE], null: false
 
-      def resolve(name:, description:, board_type:)
+      def resolve(name:, description:, board:)
         project = Project.new(name: name, description: description)
 
-        project.boards.build(board_type: board_type)
+        project.boards.build(board)
 
         project.users << context[:current_user]
         
