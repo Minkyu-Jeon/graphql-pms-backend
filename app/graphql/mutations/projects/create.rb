@@ -13,18 +13,20 @@ module Mutations
       def resolve(name:, description:, board:)
         project = Project.new(name: name, description: description)
 
-        project.boards.build(board)
+        board = Board.find_by(board_type: board.board_type)
 
+        project.boards << board
         project.users << context[:current_user]
-        
-        if project.save
+        context[:current_user].projects << project
+
+        if project.save && context[:current_user].save
           {
             project: project,
             errors: []
           }
         else
           {
-            project: null,
+            project: nil,
             errors: project.errors.full_messages
           }
         end

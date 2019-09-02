@@ -6,6 +6,5 @@ class Board
 
   field :board_type, type: String
 
-  belongs_to :proejct
   embeds_many :workflows
 end
